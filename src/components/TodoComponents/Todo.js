@@ -1,6 +1,7 @@
 import React from 'react';
+import './Todo.css';
 
-const Todo = (props) => {
+const Item = (props) => {
 	return (
 		<div
 			className={`item${
@@ -13,4 +14,4 @@ const Todo = (props) => {
 	);
 };
 
-export default Todo;
+export default Item;

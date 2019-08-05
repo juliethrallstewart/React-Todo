@@ -3,6 +3,7 @@
 import React from 'react';
 
 import Item from './Todo.js';
+import './Todo.css';
 
 const TodoList = (props) => {
 	// const sortedList = props.toDoList.sort((a, b) => a.purchased - b.purchased);

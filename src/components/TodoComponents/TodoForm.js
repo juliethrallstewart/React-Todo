@@ -17,12 +17,19 @@ class TodoForm extends React.Component {
 	submitItem = (e) => {
 		e.preventDefault();
 		this.props.addItem(this.state.item);
+		this.setState({ item: '' });
 	};
 
 	render = () => {
 		return (
 			<form onSubmit={this.submitItem}>
-				<input type="text" value={this.item} name="item" onChange={this.handleChanges} />
+				<input
+					type="text"
+					value={this.state.item}
+					name="item"
+					placeholder="enter todo item"
+					onChange={this.handleChanges}
+				/>
 				<button>Enter</button>
 			</form>
 		);

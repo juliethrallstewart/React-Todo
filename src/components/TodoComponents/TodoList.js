@@ -6,7 +6,7 @@ import Item from './Todo.js';
 import './Todo.css';
 
 const TodoList = (props) => {
-	// const sortedList = props.toDoList.sort((a, b) => a.purchased - b.purchased);
+	//const sortedList = props.toDoList.sort((a, b) => a.completed - b.completed);
 	return (
 		<div className="todo-list">
 			{props.toDoList.map((item) => <Item key={item.id} item={item} toggleItem={props.toggleItem} />)}
@@ -18,3 +18,8 @@ const TodoList = (props) => {
 };
 
 export default TodoList;
+
+{
+	/* <input type="text" className="input" placeholder="Search..." />
+			<ul>...</ul> */
+}

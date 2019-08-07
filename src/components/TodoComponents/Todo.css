@@ -33,12 +33,14 @@ span {
 }
 
 .header {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
+	display: block;
 }
 h1 {
-	text-align: left;
+	text-align: center;
+}
+
+.input-add {
+	margin-bottom: 20px;
 }
 
 .todo-list {
@@ -61,18 +63,18 @@ h1 {
 	text-decoration: line-through;
 }
 form {
-	width: 50%;
+	width: 100%;
 	display: flex;
 	justify-content: flex-end;
 }
 form > input {
-	background-color: #2d2d37;
+	background-color: white;
 	border: 0;
-	padding: 6px 0;
+	padding: 6px 0 6px 10px;
 	font-size: 1rem;
-	width: 240px;
+	width: 100%;
 	outline: 0;
-	color: white;
+	color: red;
 	border-bottom: 1px solid #e64944;
 	margin-right: 8px;
 }

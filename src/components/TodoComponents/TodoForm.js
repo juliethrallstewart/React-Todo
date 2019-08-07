@@ -16,8 +16,10 @@ class TodoForm extends React.Component {
 
 	submitItem = (e) => {
 		e.preventDefault();
+		e.stopPropagation();
 		this.props.addItem(this.state.item);
 		this.setState({ item: '' });
+		e.stopPropagation();
 	};
 
 	render = () => {
@@ -30,7 +32,7 @@ class TodoForm extends React.Component {
 					placeholder="enter todo item"
 					onChange={this.handleChanges}
 				/>
-				<button>Enter</button>
+				<button>Submit</button>
 			</form>
 		);
 	};

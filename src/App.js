@@ -1,6 +1,9 @@
 import React from 'react';
 import TodoList from '../src/components/TodoComponents/TodoList';
 import TodoForm from '../src/components/TodoComponents/TodoForm';
+import Filter from '../src/components/TodoComponents/Filter';
+import SearchResults from '../src/components/TodoComponents/SearchResults';
+import './App.css';
 
 const toDoListData = [
 	{
@@ -24,7 +27,8 @@ class App extends React.Component {
 	constructor () {
 		super();
 		this.state = {
-			toDoList : toDoListData
+			toDoList     : toDoListData,
+			filteredList : []
 		};
 	}
 
@@ -59,6 +63,23 @@ class App extends React.Component {
 		});
 	};
 
+	filterItems = (itemList) => {
+		this.state.toDoList.filter((item) => {
+			if (item.task.toLowerCase().indexOf(itemList.toLowerCase()) !== -1) {
+				console.log(`You found ${item.task}!`);
+				this.setState({
+					filteredList : [
+						...this.state.filteredList,
+						item
+					]
+				});
+			}
+			else {
+				console.log('search again');
+			}
+		});
+	};
+
 	clearCompleted = () => {
 		this.setState({
 			toDoList : this.state.toDoList.filter((item) => !item.completed)
@@ -69,14 +90,22 @@ class App extends React.Component {
 		return (
 			<div className="App">
 				<div className="header">
-					<h1>Todo List</h1>
-					<TodoForm addItem={this.addItem} />
+					<div className="input-search">
+						<Filter filterItems={this.filterItems} items={this.state.toDoList} />
+					</div>
+					<div className="title">
+						<h1>Todo List</h1>
+					</div>
+					<div className="input-add">
+						<TodoForm addItem={this.addItem} />
+					</div>
 				</div>
 				<TodoList
 					toDoList={this.state.toDoList}
 					toggleItem={this.toggleItem}
 					clearCompleted={this.clearCompleted}
 				/>
+				<SearchResults filteredList={this.state.filteredList} />
 			</div>
 		);
 	}
